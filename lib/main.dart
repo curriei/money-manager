@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: Theme.of(context).textTheme.title,
               ),
               Text(
-                '\$' + ExpenseList.grandTotal.toStringAsFixed(2),
+                '\$' + ExpenseList.getGrandTotal(),
                 style: Theme.of(context).textTheme.display1,
               ),
             ],
@@ -100,22 +100,22 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildAccountOverview() {
     return ListView.builder(
         padding: const EdgeInsets.all(16.0),
-        itemCount: max(ExpenseList.accounts.length * 2, 1),
+        itemCount: max(ExpenseList.getNumAccounts() * 2, 1),
         itemBuilder: (context, i) {
           if (i.isOdd) return Divider();
 
           final index = i ~/ 2;
 
-          if (ExpenseList.accounts.length == 0)
+          if (ExpenseList.getNumAccounts() == 0)
             return ListTile(title: Text("No Expenses Added"));
-          return _buildRow(ExpenseList.accounts[index]);
+          return _buildRow(ExpenseList.getAccountName(index));
         });
   }
 
   Widget _buildRow(String account) {
     return ListTile(
       title: Text(account),
-      subtitle: Text('\$' + ExpenseList.total[account].toStringAsFixed(2)),
+      subtitle: Text('\$' + ExpenseList.getAccountTotal(account)),
     );
   }
 

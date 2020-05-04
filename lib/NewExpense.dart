@@ -118,7 +118,7 @@ class _NewExpenseState extends State<NewExpense>{
           backgroundColor: validVal ? Theme.of(context).primaryColor : Colors.grey,
           child: Icon(Icons.check),
           onPressed: (){
-            int rtn = ExpenseList.numExpenses;
+            int rtn = ExpenseList.getNumExpenses();
             if(double.parse(valueController.text) > 0) {
               rtn = ExpenseList.addExpense(
                   double.parse(valueController.text), _accountSelected, date, reimbursing

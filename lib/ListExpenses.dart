@@ -28,10 +28,10 @@ class ListExpensesState extends State<ListExpensesSF> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: ExpenseList.numExpenses * 2,
+        itemCount: ExpenseList.getNumExpenses() * 2,
         itemBuilder: (context, i) {
           if (i.isOdd) return Divider();
-          final expense = ExpenseList.expenses[i ~/ 2];
+          final expense = ExpenseList.getExpense(i ~/ 2);
           DateTime date = expense['date'];
           return ListTile(
             trailing: Text(

@@ -18,4 +18,32 @@ class ExpenseList {
     grandTotal += amount;
     return numExpenses++;
   }
+
+  static String getGrandTotal(){
+    return grandTotal.toStringAsFixed(2);
+  }
+
+  static int getNumAccounts(){
+    return accounts.length;
+  }
+
+  static String getAccountName(int index){
+    return accounts[index];
+  }
+
+  static String getAccountTotal(String accountName){
+    return total[accountName].toStringAsFixed(2);
+  }
+
+  static int getNumExpenses(){
+    return expenses.length;
+  }
+
+  static Map<String,dynamic> getExpense(int index){
+    return expenses[index];
+  }
+
+  static int getNumReimburesements(){
+    return numReimburses;
+  }
 }

@@ -29,9 +29,9 @@ class _ReimbursementState extends State<ReimbursementsSF>{
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: ExpenseList.numExpenses,
+          itemCount: ExpenseList.getNumExpenses(),
           itemBuilder: (context, index){
-            final expense = ExpenseList.expenses[index];
+            final expense = ExpenseList.getExpense(index);
             if(expense['reimburse'])
               return ListTile(
                 title: Text('${expense['date'].year}/${expense['date'].month}/${expense['date'].day}'),
@@ -43,7 +43,7 @@ class _ReimbursementState extends State<ReimbursementsSF>{
                   });},
                 ),
               );
-            if(ExpenseList.numReimburses == 0 && index == 0)
+            if(ExpenseList.getNumReimburesements() == 0 && index == 0)
               return ListTile(title: Text("No outstanding reimbursements."));
             return Container();
           }
