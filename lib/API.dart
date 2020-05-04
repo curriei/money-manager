@@ -5,6 +5,7 @@ class ExpenseList {
   static double grandTotal = 0.0;
   static int numExpenses = 0;
   static int numReimburses = 0;
+  static double totalReimburse = 0.0;
 
   static int addExpense(double amount, String account, DateTime date, bool reimburse){
     expenses.add({'account': account,'amount': amount, 'date' : date, 'reimburse' : reimburse});
@@ -14,6 +15,7 @@ class ExpenseList {
       total[account] = 0;
     }
     numReimburses += reimburse ? 1 : 0;
+    totalReimburse += reimburse ? amount : 0;
     total[account]+=amount;
     grandTotal += amount;
     return numExpenses++;
@@ -45,5 +47,8 @@ class ExpenseList {
 
   static int getNumReimburesements(){
     return numReimburses;
+  }
+  static String getTotalReimburse(){
+    return totalReimburse.toStringAsFixed(2);
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class Menu extends StatelessWidget{
   static final listExpensesRouteName = 'listexpenses';
   static final reimbursementsRouteName = 'reimbursements';
+  static final balanceRouteName = 'balances';
   static final homeRouteName = '/';
 
   @override
@@ -17,18 +18,22 @@ class Menu extends StatelessWidget{
                 'Accounts',
                 style: Theme.of(context).textTheme.title,
               ),
-              onTap: () => onTapFunc(context, Menu.homeRouteName),
+              onTap: () => onTapFunc(context, homeRouteName),
+            ),
+            ListTile(
+              title: Text('Balance Sheet', style: Theme.of(context).textTheme.title),
+              onTap: () => onTapFunc(context, balanceRouteName),
             ),
             ListTile(
               title: Text('Expenses', style: Theme.of(context).textTheme.title),
-              onTap: () => onTapFunc(context,Menu.listExpensesRouteName),
+              onTap: () => onTapFunc(context, listExpensesRouteName),
             ),
             ListTile(
               title: Text(
                 "Reimbursements",
                 style: Theme.of(context).textTheme.title,
               ),
-              onTap:  () => onTapFunc(context,Menu.reimbursementsRouteName),
+              onTap:  () => onTapFunc(context, reimbursementsRouteName),
             ),
           ],
         )));

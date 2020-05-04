@@ -38,6 +38,10 @@ class _ReimbursementState extends State<ReimbursementsSF>{
                 subtitle: Text(expense['account'] + ": \$${expense['amount'].toStringAsFixed(2)}"),
                 trailing: Checkbox(
                   value: expense['reimburse'],
+
+
+                  //TODO: When reimbursed, onChanged should update the API to show that the accountsReceivable moved to cash
+
                   onChanged: (val) {setState(() {
                     expense['reimburse'] = val;
                   });},

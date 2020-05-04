@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:moneymanager/BalanceSheet.dart';
 
 import 'API.dart';
 import 'Menu.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         NewExpense.routeName: (context) => NewExpense(),
         Menu.listExpensesRouteName: (context) => ListExpenses(),
         Menu.reimbursementsRouteName: (context) => Reimbursements(),
+        Menu.balanceRouteName: (context) => BalanceSheet(),
       },
     );
   }
