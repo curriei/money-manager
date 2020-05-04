@@ -2,7 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'AppLibrary.dart';
+import 'API.dart';
+import 'Menu.dart';
 import 'NewExpense.dart';
 import 'ListExpenses.dart';
 import 'Reimbursements.dart';
@@ -18,20 +19,27 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      initialRoute: MyHomePage.routeName,
+      initialRoute: '/',
       routes: {
-        MyHomePage.routeName: (context) => MyHomePage(title: "Finance Tracker"),
+        Menu.homeRouteName: (context) => MyHomePage(title: "Finance Tracker"),
         NewExpense.routeName: (context) => NewExpense(),
-        ListExpenses.routeName: (context) => ListExpenses(),
-        Reimbursements.routeName: (context) => Reimbursements(),
+        Menu.listExpensesRouteName: (context) => ListExpenses(),
+        Menu.reimbursementsRouteName: (context) => Reimbursements(),
       },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  static const routeName = '/';
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
 
+    return null;
+  }
+}
+
+
+class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
@@ -47,35 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         leading: Icon(Icons.swap_horiz),
       ),
-      endDrawer: Drawer(
-          child: ListView(
-        padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
-        children: <Widget>[
-          ListTile(
-            title: Text(
-              'Accounts',
-              style: Theme.of(context).textTheme.title,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-              title: Text('Expenses', style: Theme.of(context).textTheme.title),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, ListExpenses.routeName);
-              }),
-          ListTile(
-            title: Text(
-              "Reimbursements",
-              style: Theme.of(context).textTheme.title,
-            ),
-            onTap: () {
-              Navigator.pushReplacementNamed(context, Reimbursements.routeName);
-            },
-          ),
-        ],
-      )),
+      endDrawer: Menu(),
       body: Center(
         child: Padding(
           padding: EdgeInsets.fromLTRB(10, 20, 10, 50),

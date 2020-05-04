@@ -1,14 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:moneymanager/AppLibrary.dart';
+import 'package:moneymanager/API.dart';
 import 'package:moneymanager/NewExpense.dart';
-import 'package:moneymanager/main.dart';
-
-import 'Reimbursements.dart';
+import 'Menu.dart';
 
 class ListExpenses extends StatelessWidget {
-  static String routeName = 'listexpenses';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,34 +12,7 @@ class ListExpenses extends StatelessWidget {
         title: Text('Expenses'),
         leading: Icon(Icons.swap_horiz),
       ),
-      endDrawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            ListTile(
-              title: Text("Accounts", style: Theme.of(context).textTheme.title),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, MyHomePage.routeName);
-              },
-            ),
-            ListTile(
-              title: Text("Expenses", style: Theme.of(context).textTheme.title),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text(
-                "Reimbursements",
-                style: Theme.of(context).textTheme.title,
-              ),
-              onTap: () {
-                Navigator.pushReplacementNamed(
-                    context, Reimbursements.routeName);
-              },
-            )
-          ],
-        ),
-      ),
+      endDrawer: Menu(),
       body: ListExpensesSF(),
     );
   }
