@@ -6,6 +6,9 @@ class ExpenseList {
   static int numExpenses = 0;
   static int numReimburses = 0;
   static double totalReimburse = 0.0;
+  static double startingBankBalance = 500;
+  static double startingCashBalance = 20;
+
 
   static int addExpense(double amount, String account, DateTime date, bool reimburse){
     expenses.add({'account': account,'amount': amount, 'date' : date, 'reimburse' : reimburse});
@@ -22,7 +25,7 @@ class ExpenseList {
   }
 
   static String getGrandTotal(){
-    return grandTotal.toStringAsFixed(2);
+    return _toPrintDollar(grandTotal);
   }
 
   static int getNumAccounts(){
@@ -34,7 +37,7 @@ class ExpenseList {
   }
 
   static String getAccountTotal(String accountName){
-    return total[accountName].toStringAsFixed(2);
+    return _toPrintDollar(total[accountName]);
   }
 
   static int getNumExpenses(){
@@ -45,10 +48,22 @@ class ExpenseList {
     return expenses[index];
   }
 
-  static int getNumReimburesements(){
+  static int getNumReimbursements(){
     return numReimburses;
   }
   static String getTotalReimburse(){
-    return totalReimburse.toStringAsFixed(2);
+    return _toPrintDollar(totalReimburse);
+  }
+  static String getTotalAssets(){
+    return _toPrintDollar(totalReimburse+startingBankBalance+startingCashBalance-grandTotal);
+  }
+  static String getCashInBank(){
+    return _toPrintDollar(startingCashBalance-grandTotal);
+  }
+  static String getCashOnHand(){
+    return _toPrintDollar(startingCashBalance);
+  }
+  static String _toPrintDollar(double amount){
+    return amount.toStringAsFixed(2);
   }
 }

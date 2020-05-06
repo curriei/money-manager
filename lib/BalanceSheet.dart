@@ -16,10 +16,10 @@ class BalanceSheet extends StatelessWidget{
         endDrawer: Menu(),
         body: ListView(
           children: <Widget>[
-            ExpansionTile(title: Text("Assets"),
+            ExpansionTile(title: Text("Assets \$${ExpenseList.getTotalAssets()}"),
               children: <Widget>[
-                ListTile(title: Text("Cash in bank"),),
-                ListTile(title: Text("Cash on hand")),
+                ListTile(title: Text("Cash in bank: \$${ExpenseList.getCashInBank()}"),),
+                ListTile(title: Text("Cash on hand: \$${ExpenseList.getCashOnHand()}")),
                 ListTile(title: Text("Accounts receivable: \$${ExpenseList.getTotalReimburse()}")),
                 ListTile(title: Text("Long term assets")),
               ],

@@ -47,7 +47,7 @@ class _ReimbursementState extends State<ReimbursementsSF>{
                   });},
                 ),
               );
-            if(ExpenseList.getNumReimburesements() == 0 && index == 0)
+            if(ExpenseList.getNumReimbursements() == 0 && index == 0)
               return ListTile(title: Text("No outstanding reimbursements."));
             return Container();
           }
